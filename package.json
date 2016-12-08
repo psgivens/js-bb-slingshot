@@ -1,0 +1,59 @@
+{
+  "name": "my-slingshot",
+  "version": "1.0.0",
+  "description": "Starter kit for my stuff",
+  "scripts": {
+    "prestart": "babel-node tools/startMessage.js",
+    "start": "npm-run-all --parallel open:src",
+    "open:src": "babel-node tools/srcServer.js",
+    "lint": "node_modules/.bin/esw webpack.config.* src tools",
+    "lint:watch": "npm run lint -- --watch",
+    "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run test -- --watch",
+    "clean-dist": "npm run remove-dist && mkdir dist",
+    "remove-dist": "node_modules/.bin/rimraf ./dist",
+    "build:html": "babel-node tools/buildHtml.js",
+    "prebuild": "npm-run-all clean-dist test lint build:html",
+    "build": "babel-node tools/build.js",
+    "postbuild": "babel-node tools/distServer.js"
+  },
+  "author": "Phillip Givens",
+  "license": "MIT",
+  "dependencies": {
+    "babel-polyfill": "6.8.0",
+    "bootstrap": "3.3.6",
+    "jquery": "2.2.3",
+    "toastr": "2.1.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.8.0",
+    "babel-core": "6.8.0",
+    "babel-loader": "6.2.4",
+    "babel-plugin-react-display-name": "2.0.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-register": "6.8.0",
+    "cheerio": "^0.20.0",
+    "colors": "^1.1.2",
+    "compression": "^1.6.1",
+    "cross-env": "1.0.7",
+    "css-loader": "0.23.1",
+    "enzyme": "2.2.0",
+    "eslint": "2.9.0",
+    "eslint-plugin-import": "1.6.1",
+    "eslint-plugin-react": "5.0.1",
+    "eslint-watch": "2.1.11",
+    "eventsource-polyfill": "0.9.6",
+    "expect": "1.19.0",
+    "express": "4.13.4",
+    "mocha": "^3.2.0",
+    "npm-run-all": "^3.1.2",
+    "open": "0.0.5",
+    "webpack": "1.13.0",
+    "webpack-dev-middleware": "1.6.1",
+    "webpack-hot-middleware": "2.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coryhouse/pluralsight-redux-starter"
+  }
+}
